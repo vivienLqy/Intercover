@@ -59,7 +59,7 @@ async def newlobby(interaction: discord.Interaction):
     await interaction.response.send_message("Création du lobby...")
     embed = discord.Embed(
         title=f"Lobby '{lobby_name}' en cours de création",
-        description="Décompte : 10 secondes restantes.\nParticipants : Aucun",
+        description="Décompte : 20 secondes restantes.\nParticipants : Aucun",
         color=discord.Color.yellow()
     )
 
