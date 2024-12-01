@@ -19,7 +19,7 @@ bot = commands.Bot(command_prefix='/', intents=intents)
 # Dictionnaires pour gérer les lobbies, les messages et les joueurs
 lobbies = {}
 lobby_messages = {}
-MAX_PARTICIPANTS = 5  # Nombre minimum de participants pour lancer la partie
+MAX_PARTICIPANTS = 2  # Nombre minimum de participants pour lancer la partie
 int_designated = {}
 
 def generate_lobby_name():
@@ -86,12 +86,12 @@ async def newlobby(interaction: discord.Interaction):
     lobby_messages[lobby_name] = lobby_message
 
     # Décompte de 10 secondes
-    for seconds_left in range(10, 0, -1):
+    for seconds_left in range(20, 0, -1):
         await asyncio.sleep(1)
         participants_list = "\n".join([p.mention for p in lobbies[lobby_name]])
         
         # Création de la jauge de progression
-        progress = "█" * (10 - seconds_left) + "░" * seconds_left
+        progress = "█" * (20 - seconds_left) + "░" * seconds_left
         embed.description = f"Décompte : {seconds_left} secondes restantes\n{progress}\nParticipants :\n{participants_list}"
 
         await lobby_messages[lobby_name].edit(embed=embed)
